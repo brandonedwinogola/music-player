@@ -11,112 +11,110 @@ const cover = document.getElementById("cover");
 const currTime = document.querySelector("#currTime");
 const durTime = document.querySelector("durTime");
 
-                    /*----------Song Title---------- */
+/*----------Song Title---------- */
 const songs = [
-    "Juice WRLD Ft Benny Blanco - Real Shit",
-    "Lil Baby, Lil Durk ft Roadwave - Rich Off Pain",
-    "Polo G - I know"
+  "Juice WRLD Ft Benny Blanco - Real Shit",
+  "Lil Baby, Lil Durk ft Roadwave - Rich Off Pain",
+  "Polo G - I know",
+  "Spyro - Who is Your guy?",
 ];
 
-                     /* -----------------Keep Track Of Songs-----------*/
+/* -----------------Keep Track Of Songs-----------*/
 let songIndex = 2;
 
-                     /*------------------Initially load Song details into DOM----------*/
+/*------------------Initially load Song details into DOM----------*/
 
 loadSong(songs[songIndex]);
 
-                    /* ------------------Play Song--------------*/
+/* ------------------Play Song--------------*/
 
-function playSong(){
-    musicContainer.classList.add("play");
-    playBtn.querySelector("i.fas").classList.remove("fa-play");
-    playBtn.querySelector("i.fas").classList.add("fa-pause");
+function playSong() {
+  musicContainer.classList.add("play");
+  playBtn.querySelector("i.fas").classList.remove("fa-play");
+  playBtn.querySelector("i.fas").classList.add("fa-pause");
 
-    audio.play();
-}     
+  audio.play();
+}
 
-                                             /*----------------Update Song Details--------------*/
+/*----------------Update Song Details--------------*/
 
-function loadSong(song){
-    title.innerText = song;
-    audio.src = `music/${song}.mp3`;
-    cover.src = `images/${song}.jpg`;
-}      
+function loadSong(song) {
+  title.innerText = song;
+  audio.src = `music/${song}.mp3`;
+  cover.src = `images/${song}.jpg`;
+}
 
 /*------pause song----- */
-function pauseSong(){
-    musicContainer.classList.remove("play");
-    playBtn.querySelector("i.fas").classList.add("fa-play");
-    playBtn.querySelector("i.fas").classList.remove("fa-pause");
+function pauseSong() {
+  musicContainer.classList.remove("play");
+  playBtn.querySelector("i.fas").classList.add("fa-play");
+  playBtn.querySelector("i.fas").classList.remove("fa-pause");
 
-    audio.pause();
+  audio.pause();
 }
 
 /*-------Previous Song-------*/
 
-function prevSong(){
-    songIndex--;
+function prevSong() {
+  songIndex--;
 
-    if (songIndex < 0){
-        songIndex = songs.length -1;
-    }
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
+  }
 
-    loadSong(songs[songIndex]);
+  loadSong(songs[songIndex]);
 
-    playSong();
+  playSong();
 }
 
-      /*---------------Next Song-----------*/
+/*---------------Next Song-----------*/
 
-      function nextSong() {
-        songIndex++;
+function nextSong() {
+  songIndex++;
 
-        if (songIndex > songs.length - 1) {
-            songIndex = 0;
-        }
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
+  }
 
-        loadSong(songs[songIndex]);
+  loadSong(songs[songIndex]);
 
-        playSong();
-      }
+  playSong();
+}
 
-             /*---------Update progress Bar---------*/
+/*---------Update progress Bar---------*/
 
 function updateProgress(e) {
-    const { duration, currTime } = e.srcElement;
-    const progressPercent = (currTime / duration) * 100;
-    progress.style.width = `${progressPercent}%`;
+  const { duration, currTime } = e.srcElement;
+  const progressPercent = (currTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
 }
-
 
 /* ----- Set progress bar ------*/
 
 function setProgress(e) {
-    const width = this.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
 
-    audio.currTime = (clickX / width) * duration;
+  audio.currTime = (clickX / width) * duration;
 }
 
 /**------Event Listeners------- */
 
 playBtn.addEventListener("click", () => {
-    const isPlaying = musicContainer.classList.contains("play");
+  const isPlaying = musicContainer.classList.contains("play");
 
-    if (isPlaying) {
-        pauseSong();
-    }else {
-        playSong();
-    }
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
 });
-
 
 /**---------Change Song -------- */
 
 prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
-
 
 /* -------Time/Song Update------- */
 
@@ -126,13 +124,10 @@ audio.addEventListener("timeupdate", updateProgress);
 
 progressContainer.addEventListener("click", setProgress);
 
-
 /* -------Sound Ends ------- */
 
 audio.addEventListener("ended", nextSong);
 
-
 /* --------Time Of Song---------- */
 
 audio.addEventListener("timeupdate", durTime);
-
