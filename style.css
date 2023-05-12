@@ -5,11 +5,12 @@
 }
 
 body {
-  background-image: linear-gradient(
+  /*background-image: linear-gradient(
     0deg,
     #8A2BE2,
     #9370DB
-  );
+  );*/
+  background-image: url('https://source.unsplash.com/1600x900/?musical themes');
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,8 +22,8 @@ body {
 
 /* styling the outer music container */
 .music-container {
-  background-color: #efefef;
-  box-shadow: inset -1px -1px 5px rgba(33,33,33, 0.5), inset 1px 1px 5px rgba(33,33,33,0.5); 
+  background-color: #535050;
+  box-shadow: inset -1px -1px 5px rgba(34, 32, 32, 0.5), inset 1px 1px 5px rgba(33,33,33,0.5); 
   display: flex;
   padding: 20px 30px;
   position: relative;
@@ -38,7 +39,7 @@ body {
 /* styling the image to look like a disc by placing a small circle in it*/
 .img-container::after {
   content: '';
-  background-color: #fff;
+  background-color: #92c3e4;
   border-radius: 50%;
   position: absolute;
   bottom: 100%;
@@ -107,7 +108,7 @@ body {
 
 /* styling the music-info div by placing it under the music container */
 .music-info {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(209, 170, 224, 0.5);
   border-radius: 15px 15px 0 0;
   position: absolute;
   top: 0;
@@ -132,7 +133,7 @@ body {
 
 /* styling the song progress container */
 .progress-container {
-  background: #fff;
+  background: #be031c;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px 0;
@@ -142,7 +143,7 @@ body {
 
 /* styling the actual progress bar and making it flow along with the song*/
 .progress {
-  background-color: #fe8daa;
+  background-color: #ddeb1b;
   border-radius: 5px;
   height: 100%;
   width: 0%;

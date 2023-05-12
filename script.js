@@ -16,7 +16,7 @@ const songs = [
   "Juice WRLD Ft Benny Blanco - Real Shit",
   "Lil Baby, Lil Durk ft Roadwave - Rich Off Pain",
   "Polo G - I know",
-  "Spyro - Who is Your guy?",
+  "Spyro - Who is Your guy?"
 ];
 
 /* -----------------Keep Track Of Songs-----------*/
